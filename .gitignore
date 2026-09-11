@@ -1,0 +1,91 @@
+# =========================
+# ATLAS .gitignore
+# =========================
+
+# -------------------------
+# Data: raw / external / generated
+# -------------------------
+/data/raw/
+/data/external/
+/data/interim/
+/data/processed/
+
+# -------------------------
+# Preprocessing logs
+# -------------------------
+/preprocessing/logs/*
+!/preprocessing/logs/.gitkeep
+
+# -------------------------
+# Python cache / build files
+# -------------------------
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+build/
+dist/
+
+# -------------------------
+# Jupyter
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# Virtual environments
+# -------------------------
+.venv/
+venv/
+env/
+.env
+
+# -------------------------
+# IDE / OS files
+# -------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Temporary / backup files
+# -------------------------
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# -------------------------
+# Archives and downloaded large files
+# -------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# -------------------------
+# Common large scientific data files
+# -------------------------
+*.h5
+*.hdf5
+*.h5ad
+*.h5ad.gz
+*.loom
+*.mtx
+*.mtx.gz
+*.tsv.gz
+*.bed.gz
+*.frag.gz
+*.fragments.tsv.gz
+
+# -------------------------
+# Model checkpoints / generated binary outputs
+# -------------------------
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+*.npy
+*.npz

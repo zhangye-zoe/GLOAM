@@ -1,0 +1,9 @@
+anndata
+numpy
+pandas
+scanpy
+scipy
+scikit-learn
+muon
+episcanpy
+PyYAML

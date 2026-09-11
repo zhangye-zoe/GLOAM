@@ -1,0 +1,56 @@
+# ATLAS PBMC RNA-ATAC preprocessing configuration
+# Relative paths are resolved against project_root.
+
+project_root: /data5/zhangye/ATLAS
+
+paths:
+  # Raw 10x Multiome input.
+  input_h5: data/raw/PBMC/pbmc_granulocyte_sorted_10k_filtered_feature_bc_matrix.h5
+
+  # Optional in THIS pipeline. The original notebook kept the path but did not
+  # consume the fragments file during preprocessing.
+  fragments: data/raw/PBMC/pbmc_granulocyte_sorted_10k_atac_fragments.tsv.gz
+
+  # Required external gene annotation for ATAC gene-activity construction.
+  gtf: data/external/annotations/gencode.v38.primary_assembly.annotation.gtf
+
+  # Files generated from raw data on every run.
+  interim: data/interim/PBMC/RNA_ATAC
+
+  # Final ratio-split datasets.
+  processed: data/processed/PBMC/RNA_ATAC
+  split_dir_name: results_ratio_loop
+
+split:
+  seed: 1234
+  val_frac: 0.2
+  single_fracs: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  rna_keep_prob: 0.5
+
+rna:
+  batch_key: batch
+  mt_prefix: "MT-"
+  target_sum: 10000.0
+  hvg_min_mean: 0.02
+  hvg_max_mean: 4.0
+  hvg_min_disp: 0.5
+
+atac:
+  tfidf_scale_factor: 10000.0
+  hvg_min_mean: 0.05
+  hvg_max_mean: 1.5
+  hvg_min_disp: 0.5
+
+gene_activity:
+  annotation: HAVANA
+  target_sum: 10000.0
+  # Original notebook defaults used by choose_hvg_inplace()
+  hvg_min_mean: 0.0125
+  hvg_max_mean: 3.0
+  hvg_min_disp: 0.5
+
+checks:
+  min_train_rna_cells: 50
+  min_train_atac_cells: 50
+  min_val_query_cells: 20
+  min_common_features: 50
