@@ -2,13 +2,18 @@
 # ATLAS .gitignore
 # =========================
 
+
 # -------------------------
-# Data: raw / external / generated
+# Data: keep directory structure only
 # -------------------------
-/data/raw/
-/data/external/
-/data/interim/
-/data/processed/
+/data/**
+
+# Keep directories visible so .gitkeep can be tracked
+!/data/**/
+
+# Keep placeholder files
+!/data/**/.gitkeep
+
 
 # -------------------------
 # Preprocessing logs
